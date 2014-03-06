@@ -1,8 +1,9 @@
 Scheduler::Application.routes.draw do
   
+ 
   devise_for :users
   root 'static_pages#index'
-  
+  resources :users, only: [:show, :index]
   resources :event_attendances
   resources :events
   
