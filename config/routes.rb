@@ -3,9 +3,10 @@ Scheduler::Application.routes.draw do
  
   devise_for :users
   root 'static_pages#index'
-  resources :users, only: [:show, :index]
-  resources :event_attendances
-  resources :events
+  resources :users, only: [:show, :index] do 
+    resources :events
+  end
+  resources :event_attendances, only: [:new, :create, :destroy]
   
   get "static_pages/about"
   get "static_pages/info"
