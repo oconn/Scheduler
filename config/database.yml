@@ -9,7 +9,7 @@ development:
   database: scheduler_dev
   pool: 5
   timeout: 5000
-  username: alextsveta2012
+  username: Matt
   password: 
 
 # Warning: The database defined as "test" will be erased and
@@ -21,7 +21,7 @@ test:
   database: scheduler_test
   pool: 5
   timeout: 5000
-  username: alextsveta2012
+  username: Matt
   password: 
 
 production:
