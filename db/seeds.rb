@@ -10,14 +10,14 @@
 
 User.create(first_name: "Matt",
             last_name: "O'Connell",
-            email: "matthew.j.oconnell1@gamil.com",
+            email: "matthew.j.oconnell1@gmail.com",
             password: "testtest",
             password_confirmation: "testtest",
             profession: "Cowboy")
 
 User.create(first_name: "Alex",
             last_name: "Codreanu",
-            email: "alexcodreanu86@gamil.com",
+            email: "alexcodreanu86@gmail.com",
             password: "12345678",
             password_confirmation: "12345678",
             profession: "Doctor")
