@@ -22,10 +22,15 @@ class EventsController < ApplicationController
   end
 
   def index
+    
   end
 
   def show
-    @events = current_user.created_events
+    @event = Event.find(params[:id])
+  end
+
+  def spots_left
+    self.max_attendees - EventAttendance.where(event_id: self.id).count
   end
 
 
