@@ -16,3 +16,4 @@
 .ruby-version
 .DS_Store
 bundler_stubs/
+config/user_pg.yaml
