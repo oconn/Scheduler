@@ -35,7 +35,7 @@ class EventsController < ApplicationController
   end
 
   def search 
-    
+    @events = Event.where('title LIKE %?%', params)
   end
 
   private
