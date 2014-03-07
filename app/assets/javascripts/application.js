@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require moment.min
+//= jquery-ui-custom.min
+//= require fullcalendar.min
 //= require_tree .
-//= require_tree ../../../vendor/assets/javascripts/.
+
 
