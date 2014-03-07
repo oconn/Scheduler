@@ -11,3 +11,13 @@
  *= require_self
  *= require_tree .
  */
+
+.stacked-buttons {
+  margin: 1em auto;
+
+  a {
+    display: block;
+    text-align: center;
+    margin: 1em auto;
+  }
+}

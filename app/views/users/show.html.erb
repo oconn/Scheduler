@@ -1,8 +1,7 @@
-<h1>Your events</h1>
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
 
-<ul> 
-  <% @events.each do |event|%>
-  <li><a href="#"><%= event.title %></a></li>
-  <% end %>
+<h3>Profession:  <%= @user.profession %></h3>
 
-</ul>
+<% if current_user.id == @user.id %>
+  <%= link_to "Edit", edit_user_registration_path %>
+<% end %>
