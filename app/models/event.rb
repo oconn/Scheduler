@@ -6,4 +6,5 @@ class Event < ActiveRecord::Base
   def spots_left
     self.max_attendees - EventAttendance.where(event_id: self.id).count
   end
+
 end

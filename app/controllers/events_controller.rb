@@ -35,7 +35,7 @@ class EventsController < ApplicationController
   end
 
   def search 
-    
+    p params
   end
 
   private
