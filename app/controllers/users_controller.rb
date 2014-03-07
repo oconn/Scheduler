@@ -9,10 +9,12 @@ class UsersController < ApplicationController
   end
 
   def get_events 
-    events = {}
+    @events = {}
+
     current_user.created_events.each_with_index do |event, index|
-      events[index] = event.to_json
+      @events[index] = event.to_json
     end
-    events.to_json
+
+    render json:  @events
   end
 end
