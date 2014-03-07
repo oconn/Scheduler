@@ -5,7 +5,7 @@
     
     <%= form_for :search, url: search_path , method: :post, html: {class: "navbar-form navbar-left", role: "search"} do |f| %>
       <div class="form-group">
-        <%= f.search_field :search, placeholder: "Event Type", class: "form-control" %>
+        <%= f.search_field :search, name: "search_data",  placeholder: "Event Type", class: "form-control" %>
       </div>
         <%= f.button type: :submit, class: "btn btn-primary", value: "Search" %>
     <% end %>

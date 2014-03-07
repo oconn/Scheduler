@@ -1,0 +1,8 @@
+<h1>Search succesful</h1>
+<% if @events.empty? %>
+  <h1>No events found for: "<%= @search_content %>"!!!</h1>
+<% else %>
+  <% @events.each do |event| %>
+    <%= link_to event.title, user_event_path(event.creator.id, event.id)  %>
+  <% end %>
+<% end %>
