@@ -1,4 +1,8 @@
-
+<h1 class="page-title">Welcome To Scheduler
 <% if !user_signed_in? %>
-  <%= link_to "Sign up", new_user_registration_path , class: "btn btn-primary" %>
+  <%= link_to "Sign up", new_user_registration_path , class: "btn btn-primary sign-up-button" %>
 <% end %>
+</h1>
+
+
+<%= image_tag "calendar.gif", id: "calendar-img" %>

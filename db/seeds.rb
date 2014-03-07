@@ -13,17 +13,17 @@ User.create(first_name: "Matt",
             email: "matthew.j.oconnell1@gmail.com",
             password: "testtest",
             password_confirmation: "testtest",
-            profession: "Cowboy")
+            profession: "Space Cowboy")
 
 User.create(first_name: "Alex",
             last_name: "Codreanu",
             email: "alexcodreanu86@gmail.com",
             password: "12345678",
             password_confirmation: "12345678",
-            profession: "Doctor")
+            profession: "Love Doctor")
 
 
-50.times do
+10.times do
   User.create(first_name: Faker::Name.name,
               last_name: Faker::Name.name,
               email: Faker::Internet.email,
@@ -32,7 +32,7 @@ User.create(first_name: "Alex",
               profession: @professions.sample )
 end
 
-@events = ["Cupcake Baking", "Let's Shoot some otters", "Learn To Program"]
+@events = ["Cupcake Baking", "Learn to be awesome", "Learn To Program", "Hike Mt. Everest", "Squirrel Herding 101", "Basic's of Otter Fighting"]
 3.times do |i| 
   User.all.each do |user|
     Event.create(user_id: user.id,
