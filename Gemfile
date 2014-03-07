@@ -28,8 +28,12 @@ gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'normalize-scss'
 
+
+
 group :test, :development do
   gem 'faker'
+  gem 'pry'
+  gem 'pry-nav'
 end
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

@@ -35,7 +35,8 @@ class EventsController < ApplicationController
   end
 
   def search 
-    @events = Event.where('title LIKE %?%', params)
+    @search_content = params[:search_data]
+    @events = Event.where("title ILIKE (?)", "%#{@search_content}%")  
   end
 
   private
@@ -44,3 +45,6 @@ class EventsController < ApplicationController
     params.require(:event).permit(:title, :starts_at, :ends_at, :max_attendees, :description)
   end
 end
+
+
+
