@@ -1,2 +1,12 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<h1>Your events</h1>
+
+<div class="row">
+  <% current_user.created_events.each do |event|%>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 stacked-buttons">
+      <%= link_to event.title, user_event_path(event.creator.id, event.id), class: "btn btn-primary" %>
+      <%= link_to "Update", user_event_path(event.creator.id, event.id), method: "PATCH", class: "btn btn-info" %>
+      <%= link_to "Delete", user_event_path(event.creator.id, event.id), method: "DELETE", class: "btn btn-danger" %>
+    </div>
+  <% end %>
+
+</ul>

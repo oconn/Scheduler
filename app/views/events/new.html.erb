@@ -1,6 +1,5 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
-<%= form_for @event, method: "POST" do |f| %>
+<h1>New Event: </h1>
+<%= form_for [current_user, @event], method: "POST" do |f| %>
   <%= f.label :title %><br>
   <%= f.text_field :title, placeholder: "My cool event"  %><br>
   <%= f.label :description %><br>

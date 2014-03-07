@@ -7,6 +7,10 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    event = Event.find(params[:id])
+    event.destroy
+    flash[:notice] = "Event '#{event.title}' removed."
+    redirect_to user_events_path(current_user.id)
   end
 
   def create
@@ -14,7 +18,8 @@ class EventsController < ApplicationController
     @event = Event.new({user_id: @user.id}.merge event_params)
 
     if @event.save
-      redirect_to @event
+      flash[:notice] = "Event '#{@event.title}' created."
+      redirect_to user_event_path(current_user.id, @event.id)
     else
       @errors = @event.errors.messages
       render 'new'
@@ -28,11 +33,6 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
   end
-
-  def spots_left
-    self.max_attendees - EventAttendance.where(event_id: self.id).count
-  end
-
 
   private
 
