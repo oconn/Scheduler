@@ -2,62 +2,86 @@
 
 <h3>Profession:  <%= @user.profession %></h3>
 
-<% if current_user.id == @user.id %>
-  <%= link_to "Edit", edit_user_registration_path %>
-<% end %>
+
 
 
 
 <script type="text/javascript">
+  
+
+
   $(document).ready(function() {
-    
-    $('#calendar').fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'basicWeek,month,basicDay'
-      },
-      defaultDate: '2014-01-12',
-      editable: true,
-      events: [
-        {
-          title: 'All Day Event',
-          start: '2014-01-01'
-        },
-        {
-          title: 'Long Event',
-          start: '2014-01-07',
-          end: '2014-01-10'
-        },
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: '2014-01-09T16:00:00'
-        },
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: '2014-01-16T16:00:00'
-        },
-        {
-          title: 'Meeting',
-          start: '2014-01-12T10:30:00',
-          end: '2014-01-12T12:30:00'
-        },
-        {
-          title: 'Lunch',
-          start: '2014-01-12T12:00:00'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2014-01-13T07:00:00'
-        },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2014-01-28'
+
+    var eventCreator = function(jsonObject){
+     
+      listOfEvents = $.map(jsonObject, function(evn, i){
+        return {
+          title: evn.title,
+          start: evn.starts_at,
+          location: evn.location,
+          end: evn.ends_at
         }
-      ]
+      });
+      return listOfEvents;
+    }
+    
+    var serverEvents;
+    $.ajax({
+      url: "/get_events", 
+      method: "get", 
+      dataType: "json"
+    }).done(function(serverResponse){
+      serverEvents = serverResponse;
+      $('#calendar').fullCalendar({
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'basicWeek,month,basicDay'
+        },
+        defaultDate: new Date(),
+        editable: true,
+        events: eventCreator(serverEvents)
+        // events: [
+
+        //   {
+        //     title: 'All Day Event',
+        //     start: '2014-01-01'
+        //   },
+        //   {
+        //     title: 'Wrestle an alligator',
+        //     start: '2014-03-07',
+        //     end: '2014-03-10'
+        //   },
+        //   {
+        //     id: 999,
+        //     title: 'Learn to code',
+        //     start: '2014-01-09T16:00:00'
+        //   },
+        //   {
+        //     id: 999,
+        //     title: 'Eat a taco',
+        //     start: '2014-01-16T16:00:00'
+        //   },
+        //   {
+        //     title: 'Meeting',
+        //     start: '2014-01-12T10:30:00',
+        //     end: '2014-01-12T12:30:00'
+        //   },
+        //   {
+        //     title: 'Lunch',
+        //     start: '2014-01-12T12:00:00'
+        //   },
+        //   {
+        //     title: 'Birthday Party',
+        //     start: '2014-01-13T07:00:00'
+        //   },
+        //   {
+        //     title: 'Click for DBC',
+        //     url: 'http://devbootcamp.com',
+        //     start: '2014-01-28'
+        //   }
+        // ]
+      });
     });
     
   });

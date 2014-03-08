@@ -4,6 +4,13 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update 
+    @event  = Event.find(params[:id])
+    @event.update({location: params[:event][:location]}.merge event_params)
+    redirect_to user_events_path(current_user.id)
   end
 
   def destroy
@@ -15,7 +22,8 @@ class EventsController < ApplicationController
 
   def create
     @user = current_user
-    @event = Event.new({user_id: @user.id}.merge event_params)
+    @event = Event.new({user_id: @user.id, location: params[:event][:location]}.merge event_params)
+    binding.pry
 
     if @event.save
       flash[:notice] = "Event '#{@event.title}' created."
