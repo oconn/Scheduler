@@ -1,2 +1,15 @@
-<h1>Events#edit</h1>
-<p>Find me in app/views/events/edit.html.erb</p>
+<%= form_for [current_user, @event], method: "PATCH" do |f| %>
+  <%= f.label :title %><br>
+  <%= f.text_field :title  %><br>
+  <%= f.label :location %><br>
+  <%= f.text_field :location %><br>
+  <%= f.label :description %><br>
+  <%= f.text_area :description, rows: 20, cols: 100 %><br>
+  <%= f.label :starts_at %><br>
+  <%= f.datetime_local_field :starts_at %><br>
+  <%= f.label :ends_at%><br>
+  <%= f.datetime_local_field :ends_at  %><br>
+  <%= f.label :max_attendees %><br>
+  <%= f.number_field :max_attendees %><br>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

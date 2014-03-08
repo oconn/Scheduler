@@ -12,18 +12,13 @@
 
   $(document).ready(function() {
 
-    var Event = function(title){
-      this.title = title
-      this.starts_at
-
-    }
-
     var eventCreator = function(jsonObject){
      
       listOfEvents = $.map(jsonObject, function(evn, i){
         return {
           title: evn.title,
           start: evn.starts_at,
+          location: evn.location,
           end: evn.ends_at
         }
       });
@@ -37,9 +32,6 @@
       dataType: "json"
     }).done(function(serverResponse){
       serverEvents = serverResponse;
-      // console.log(serverEvents[1])
-      
-      // setTimeout(function(){console.log(events[0])}, 1500);
       $('#calendar').fullCalendar({
         header: {
           left: 'prev,next today',

@@ -2,6 +2,8 @@
 <%= form_for [current_user, @event], method: "POST" do |f| %>
   <%= f.label :title %><br>
   <%= f.text_field :title, placeholder: "My cool event"  %><br>
+  <%= f.label :location %><br>
+  <%= f.text_field :location %><br>
   <%= f.label :description %><br>
   <%= f.text_area :description, rows: 20, cols: 100 %><br>
   <%= f.label :starts_at %><br>
