@@ -19,11 +19,15 @@
     }
 
     var eventCreator = function(jsonObject){
-      var emptyArray = []
-      for(var i = 0; i < jsonObject.length(); i++){
-        emptyArray.push(jsonObject[i]);
-      }
-      console.log(emptyArray)
+     
+      listOfEvents = $.map(jsonObject, function(evn, i){
+        return {
+          title: evn.title,
+          start: evn.starts_at,
+          end: evn.ends_at
+        }
+      });
+      return listOfEvents;
     }
     
     var serverEvents;
@@ -33,7 +37,8 @@
       dataType: "json"
     }).done(function(serverResponse){
       serverEvents = serverResponse;
-      eventCreator(serverEvents);
+      // console.log(serverEvents[1])
+      
       // setTimeout(function(){console.log(events[0])}, 1500);
       $('#calendar').fullCalendar({
         header: {
@@ -43,46 +48,47 @@
         },
         defaultDate: new Date(),
         editable: true,
-        events: [
+        events: eventCreator(serverEvents)
+        // events: [
 
-          {
-            title: 'All Day Event',
-            start: '2014-01-01'
-          },
-          {
-            title: 'Wrestle an alligator',
-            start: '2014-03-07',
-            end: '2014-03-10'
-          },
-          {
-            id: 999,
-            title: 'Learn to code',
-            start: '2014-01-09T16:00:00'
-          },
-          {
-            id: 999,
-            title: 'Eat a taco',
-            start: '2014-01-16T16:00:00'
-          },
-          {
-            title: 'Meeting',
-            start: '2014-01-12T10:30:00',
-            end: '2014-01-12T12:30:00'
-          },
-          {
-            title: 'Lunch',
-            start: '2014-01-12T12:00:00'
-          },
-          {
-            title: 'Birthday Party',
-            start: '2014-01-13T07:00:00'
-          },
-          {
-            title: 'Click for DBC',
-            url: 'http://devbootcamp.com',
-            start: '2014-01-28'
-          }
-        ]
+        //   {
+        //     title: 'All Day Event',
+        //     start: '2014-01-01'
+        //   },
+        //   {
+        //     title: 'Wrestle an alligator',
+        //     start: '2014-03-07',
+        //     end: '2014-03-10'
+        //   },
+        //   {
+        //     id: 999,
+        //     title: 'Learn to code',
+        //     start: '2014-01-09T16:00:00'
+        //   },
+        //   {
+        //     id: 999,
+        //     title: 'Eat a taco',
+        //     start: '2014-01-16T16:00:00'
+        //   },
+        //   {
+        //     title: 'Meeting',
+        //     start: '2014-01-12T10:30:00',
+        //     end: '2014-01-12T12:30:00'
+        //   },
+        //   {
+        //     title: 'Lunch',
+        //     start: '2014-01-12T12:00:00'
+        //   },
+        //   {
+        //     title: 'Birthday Party',
+        //     start: '2014-01-13T07:00:00'
+        //   },
+        //   {
+        //     title: 'Click for DBC',
+        //     url: 'http://devbootcamp.com',
+        //     start: '2014-01-28'
+        //   }
+        // ]
       });
     });
     
